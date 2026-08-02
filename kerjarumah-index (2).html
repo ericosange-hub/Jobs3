@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KerjaRumah — Lowongan Freelance & WFH Terverifikasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16281F;
+    --ink-soft:#3C4F44;
+    --paper:#F5EFDD;
+    --paper-alt:#ECE2C6;
+    --forest:#1F3D2E;
+    --forest-dark:#122A1D;
+    --sun:#E8A33D;
+    --sun-light:#F4C978;
+    --sage:#9CB89A;
+    --teal:#2C6E63;
+    --white:#FFFDF7;
+    --line:rgba(22,40,31,0.14);
+    --shadow: 0 20px 50px -20px rgba(18,42,29,0.35);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer; border:none; background:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:600; color:var(--forest-dark); line-height:1.12; letter-spacing:-0.01em;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:500;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--sun); display:inline-block;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:15px 28px; border-radius:100px; font-weight:700; font-size:15.5px;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{ background:var(--forest); color:var(--paper); box-shadow:0 10px 24px -8px rgba(18,42,29,0.55);}
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 16px 30px -10px rgba(18,42,29,0.6); background:var(--forest-dark);}
+  .btn-ghost{ background:transparent; color:var(--forest-dark); border:1.5px solid var(--line);}
+  .btn-ghost:hover{ background:rgba(31,61,46,0.06); border-color:var(--forest);}
+  .btn-sun{ background:var(--sun); color:var(--forest-dark); box-shadow:0 10px 24px -8px rgba(232,163,61,0.6);}
+  .btn-sun:hover{ transform:translateY(-2px); background:var(--sun-light);}
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(245,239,221,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1180px; margin:0 auto;}
+  .logo{ display:flex; align-items:center; gap:10px; font-family:'Fraunces', serif; font-weight:700; font-size:20px; color:var(--forest-dark);}
+  .logo-mark{ width:36px; height:36px; border-radius:10px; background:var(--forest); color:var(--sun-light); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; font-family:'JetBrains Mono',monospace; flex-shrink:0;}
+  .nav-links{ display:flex; gap:34px; align-items:center;}
+  .nav-links a{ font-weight:600; font-size:14.5px; color:var(--ink-soft); transition:color .2s;}
+  .nav-links a:hover{ color:var(--forest-dark);}
+  .nav-cta{ display:flex; align-items:center; gap:18px;}
+  .hamburger{ display:none; flex-direction:column; gap:5px; width:26px;}
+  .hamburger span{ height:2px; background:var(--forest-dark); border-radius:2px;}
+  .mobile-menu{ display:none; }
+
+  /* ===== HERO ===== */
+  .hero{ position:relative; padding:90px 0 80px; overflow:hidden;}
+  .hero::before{
+    content:""; position:absolute; top:-180px; right:-160px; width:520px; height:520px;
+    background:radial-gradient(circle, var(--sage) 0%, transparent 70%);
+    opacity:.55; border-radius:50%; filter:blur(10px);
+  }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center; position:relative;}
+  .hero h1{ font-size:clamp(38px, 5vw, 60px); margin:18px 0 20px;}
+  .hero h1 em{ font-style:italic; color:var(--teal);}
+  .hero p.lead{ font-size:18px; color:var(--ink-soft); max-width:480px; margin-bottom:34px;}
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:46px;}
+  .stats-row{ display:flex; gap:36px; flex-wrap:wrap;}
+  .stat{ }
+  .stat .num{ font-family:'Fraunces', serif; font-size:28px; font-weight:600; color:var(--forest-dark);}
+  .stat .label{ font-size:13px; color:var(--ink-soft); max-width:120px;}
+
+  /* signature schedule widget */
+  .hero-visual{ position:relative; }
+  .chip{
+    position:absolute; background:var(--white); border:1px solid var(--line); border-radius:100px;
+    padding:9px 16px; font-size:12.5px; font-weight:700; box-shadow:var(--shadow);
+    display:flex; align-items:center; gap:7px; font-family:'JetBrains Mono', monospace; text-transform:uppercase; letter-spacing:.04em;
+    color:var(--forest-dark);
+  }
+  .chip.c1{ top:-8px; left:-6px; z-index:3; transform:rotate(-6deg);}
+  .chip.c1 .dot{background:var(--sun);}
+  .chip.c2{ bottom:6px; right:-18px; z-index:3; transform:rotate(4deg);}
+  .chip.c2 .dot{background:var(--teal);}
+  .chip .dot{ width:8px; height:8px; border-radius:50%;}
+
+  .schedule-card{
+    background:var(--white); border:1px solid var(--line); border-radius:26px; padding:28px;
+    box-shadow:var(--shadow); position:relative; z-index:2; transform:rotate(1.2deg);
+  }
+  .schedule-head{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px;}
+  .schedule-head h3{ font-size:19px; margin-bottom:4px;}
+  .schedule-head p{ font-size:13px; color:var(--ink-soft); font-family:'JetBrains Mono',monospace;}
+  .reset-btn{ font-size:12px; font-weight:700; color:var(--teal); border:1px solid var(--line); padding:6px 12px; border-radius:100px; font-family:'Plus Jakarta Sans';}
+  .reset-btn:hover{ background:var(--paper-alt);}
+  .sched-grid{ display:grid; grid-template-columns:34px repeat(7,1fr); gap:6px; margin-bottom:16px;}
+  .sched-grid .hcell{ font-size:11px; text-align:center; color:var(--ink-soft); font-weight:700; padding-bottom:2px;}
+  .sched-grid .rlabel{ font-size:10.5px; color:var(--ink-soft); display:flex; align-items:center; font-weight:600;}
+  .cell{
+    aspect-ratio:1/0.85; border-radius:7px; background:var(--paper-alt); cursor:pointer;
+    transition:background .18s ease, transform .18s ease;
+  }
+  .cell:hover{ transform:scale(1.08); }
+  .cell.active{ background:var(--sun); }
+  .sched-foot{ display:flex; align-items:center; justify-content:space-between; padding-top:16px; border-top:1px dashed var(--line);}
+  .sched-foot .count{ font-family:'Fraunces', serif; font-size:22px; color:var(--forest-dark); font-weight:600;}
+  .sched-foot .count-label{ font-size:12px; color:var(--ink-soft);}
+
+  /* ===== TRUST BAR ===== */
+  .trust{ padding:34px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--paper-alt);}
+  .trust .wrap{ display:flex; align-items:center; gap:40px; flex-wrap:wrap; justify-content:space-between;}
+  .trust p{ font-size:13.5px; color:var(--ink-soft); font-weight:600; flex-shrink:0;}
+  .trust-logos{ display:flex; gap:34px; flex-wrap:wrap; align-items:center;}
+  .trust-logos span{ font-family:'Fraunces', serif; font-weight:600; font-size:16px; color:var(--ink-soft); opacity:.75;}
+
+  /* ===== SECTION generic ===== */
+  section{ padding:100px 0;}
+  .sec-head{ max-width:600px; margin-bottom:56px;}
+  .sec-head h2{ font-size:clamp(28px,3.4vw,40px); margin:14px 0 12px;}
+  .sec-head p{ color:var(--ink-soft); font-size:16px;}
+
+  /* ===== KATEGORI ===== */
+  .kat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .kat-card{
+    background:var(--white); border:1px solid var(--line); border-radius:20px; padding:26px 22px;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .kat-card:hover{ transform:translateY(-5px); box-shadow:var(--shadow); border-color:transparent;}
+  .kat-icon{ width:44px; height:44px; border-radius:12px; background:var(--paper-alt); display:flex; align-items:center; justify-content:center; margin-bottom:16px; color:var(--teal);}
+  .kat-card h4{ font-size:16.5px; margin-bottom:6px;}
+  .kat-card p{ font-size:13px; color:var(--ink-soft); margin-bottom:14px;}
+  .kat-count{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--forest); font-weight:500; background:var(--sage); display:inline-block; padding:3px 10px; border-radius:100px; opacity:.85;}
+
+  /* ===== CARA KERJA ===== */
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; position:relative;}
+  .step{ background:var(--forest); color:var(--paper); border-radius:22px; padding:34px 28px; position:relative; overflow:hidden;}
+  .step:nth-child(2){ background:var(--teal);}
+  .step:nth-child(3){ background:var(--forest-dark);}
+  .step .step-num{ font-family:'Fraunces', serif; font-size:46px; font-weight:600; color:var(--sun-light); margin-bottom:22px; display:block;}
+  .step h4{ color:var(--paper); font-size:19px; margin-bottom:10px;}
+  .step p{ color:rgba(245,239,221,0.78); font-size:14.5px;}
+
+  /* ===== LOWONGAN ===== */
+  .job-list{ display:flex; flex-direction:column; gap:14px;}
+  .job-card{
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+    background:var(--white); border:1px solid var(--line); border-radius:18px; padding:22px 26px;
+    transition:border-color .2s ease, box-shadow .2s ease;
+    flex-wrap:wrap;
+  }
+  .job-card:hover{ border-color:var(--teal); box-shadow:var(--shadow);}
+  .job-left{ display:flex; gap:16px; align-items:center; flex:1; min-width:260px;}
+  .job-badge{ width:48px; height:48px; border-radius:12px; background:var(--paper-alt); display:flex; align-items:center; justify-content:center; color:var(--teal); flex-shrink:0;}
+  .job-title{ font-family:'Fraunces', serif; font-size:18px; font-weight:600; color:var(--forest-dark); margin-bottom:4px;}
+  .job-meta{ font-size:13px; color:var(--ink-soft); display:flex; gap:10px; flex-wrap:wrap;}
+  .job-tag{ font-size:11px; font-weight:700; font-family:'JetBrains Mono',monospace; text-transform:uppercase; letter-spacing:.03em; background:var(--sage); color:var(--forest-dark); padding:3px 9px; border-radius:100px;}
+  .job-right{ display:flex; align-items:center; gap:22px;}
+  .job-pay{ text-align:right;}
+  .job-pay .amount{ font-family:'Fraunces', serif; font-weight:600; font-size:16.5px; color:var(--forest-dark);}
+  .job-pay .type{ font-size:12px; color:var(--ink-soft);}
+  .job-btn{ font-size:13.5px; font-weight:700; color:var(--forest-dark); border:1.5px solid var(--line); padding:10px 18px; border-radius:100px; transition:all .2s;}
+  .job-btn:hover{ background:var(--forest-dark); color:var(--paper); border-color:var(--forest-dark);}
+
+  /* ===== TESTIMONI ===== */
+  .testi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .testi-card{ background:var(--white); border:1px solid var(--line); border-radius:20px; padding:28px; display:flex; flex-direction:column; gap:18px;}
+  .testi-quote{ font-family:'Fraunces', serif; font-size:17px; color:var(--forest-dark); line-height:1.5; font-style:italic;}
+  .testi-person{ display:flex; align-items:center; gap:12px; margin-top:auto;}
+  .avatar{ width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:600; color:var(--white); font-size:15px; flex-shrink:0;}
+  .p-name{ font-size:14px; font-weight:700; color:var(--forest-dark);}
+  .p-role{ font-size:12px; color:var(--ink-soft);}
+
+  /* ===== FAQ ===== */
+  .faq{ max-width:760px; margin:0 auto;}
+  .faq-item{ border-bottom:1px solid var(--line); padding:22px 0;}
+  .faq-q{ display:flex; align-items:center; justify-content:space-between; gap:20px; cursor:pointer;}
+  .faq-q h4{ font-family:'Fraunces',serif; font-size:18px; font-weight:600; color:var(--forest-dark);}
+  .faq-icon{ width:26px; height:26px; border-radius:50%; border:1.5px solid var(--line); flex-shrink:0; position:relative;}
+  .faq-icon::before,.faq-icon::after{ content:""; position:absolute; background:var(--forest-dark); top:50%; left:50%; transform:translate(-50%,-50%);}
+  .faq-icon::before{ width:10px; height:1.6px;}
+  .faq-icon::after{ width:1.6px; height:10px; transition:opacity .2s;}
+  .faq-item.open .faq-icon::after{ opacity:0;}
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height .35s ease;}
+  .faq-a p{ padding-top:14px; color:var(--ink-soft); font-size:14.5px; max-width:600px;}
+
+  /* ===== CTA FINAL ===== */
+  .cta-final{ background:var(--forest-dark); border-radius:32px; padding:70px 60px; text-align:center; position:relative; overflow:hidden; margin:0 32px;}
+  .cta-final::before{ content:""; position:absolute; bottom:-140px; left:-100px; width:380px; height:380px; background:radial-gradient(circle,var(--sun) 0%, transparent 70%); opacity:.35;}
+  .cta-final h2{ color:var(--paper); font-size:clamp(28px,4vw,42px); margin-bottom:14px; position:relative;}
+  .cta-final p{ color:rgba(245,239,221,0.75); margin-bottom:32px; position:relative; font-size:16px;}
+  .cta-final .btn{ position:relative;}
+
+  /* ===== FOOTER ===== */
+  footer{ padding:70px 0 30px;}
+  .foot-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:40px; margin-bottom:50px;}
+  .foot-logo{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:700; font-size:19px; margin-bottom:14px;}
+  .foot-tag{ font-size:13.5px; color:var(--ink-soft); max-width:240px;}
+  .foot-col h5{ font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); font-family:'JetBrains Mono',monospace; margin-bottom:16px; font-weight:500;}
+  .foot-col a{ display:block; font-size:14px; color:var(--forest-dark); font-weight:600; margin-bottom:11px; opacity:.85;}
+  .foot-col a:hover{ opacity:1; color:var(--teal);}
+  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:26px; border-top:1px solid var(--line); font-size:12.5px; color:var(--ink-soft); flex-wrap:wrap; gap:10px;}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:960px){
+    .hero-grid{ grid-template-columns:1fr; gap:60px;}
+    .hero-visual{ max-width:460px; margin:0 auto;}
+    .kat-grid{ grid-template-columns:repeat(2,1fr);}
+    .steps{ grid-template-columns:1fr;}
+    .testi-grid{ grid-template-columns:1fr;}
+    .foot-grid{ grid-template-columns:1fr 1fr; row-gap:34px;}
+  }
+  @media (max-width:720px){
+    .nav-links{ display:none;}
+    .hamburger{ display:flex;}
+    .nav-cta .btn-ghost{ display:none;}
+    .job-card{ flex-direction:column; align-items:flex-start;}
+    .job-right{ width:100%; justify-content:space-between;}
+    .cta-final{ margin:0 16px; padding:50px 26px;}
+    .wrap{ padding:0 20px;}
+    section{ padding:70px 0;}
+  }
+  @media (max-width:560px){
+    .kat-grid{ grid-template-columns:1fr;}
+    .stats-row{ gap:24px;}
+    .foot-grid{ grid-template-columns:1fr;}
+    .sched-grid{ gap:4px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; animation:none !important; scroll-behavior:auto !important;}
+  }
+  :focus-visible{ outline:2.5px solid var(--teal); outline-offset:3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="logo-mark">KR</span>KerjaRumah</div>
+    <div class="nav-links">
+      <a href="#kategori">Kategori</a>
+      <a href="#cara-kerja">Cara Kerja</a>
+      <a href="#lowongan">Lowongan</a>
+      <a href="#testimoni">Testimoni</a>
+    </div>
+    <div class="nav-cta">
+      <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553" class="btn btn-ghost" style="padding:10px 20px; font-size:14px;">Masuk</a>
+      <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553" class="btn btn-primary" style="padding:10px 22px; font-size:14px;">Daftar Gratis</a>
+    </div>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Lowongan freelance & WFH terverifikasi</span>
+      <h1>Kerja bagus, <em>cukup dari rumah.</em></h1>
+      <p class="lead">Ribuan lowongan remote dari perusahaan asli. Kamu yang atur jam kerja — mulai dari ruang tamu, kamar, atau meja dapur sekalipun.</p>
+      <div class="hero-ctas">
+        <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553" class="btn btn-primary">Cari Lowongan →</a>
+        <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553" class="btn btn-ghost">Lihat Cara Kerja</a>
+      </div>
+      <div class="stats-row">
+        <div class="stat"><div class="num">12.400+</div><div class="label">Lowongan aktif minggu ini</div></div>
+        <div class="stat"><div class="num">68.000+</div><div class="label">Pekerja sudah bergabung</div></div>
+        <div class="stat"><div class="num">Rp 3,5 jt</div><div class="label">Rata-rata penghasilan/bulan</div></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="chip c1"><span class="dot"></span>100% Remote</div>
+      <div class="chip c2"><span class="dot"></span>Terverifikasi</div>
+      <div class="schedule-card">
+        <div class="schedule-head">
+          <div>
+            <h3>Atur jam kerjamu sendiri</h3>
+            <p>KLIK UNTUK COBA</p>
+          </div>
+          <button class="reset-btn" id="resetSched">Reset</button>
+        </div>
+        <div class="sched-grid" id="schedGrid">
+          <div class="hcell"></div>
+          <div class="hcell">S</div><div class="hcell">S</div><div class="hcell">R</div>
+          <div class="hcell">K</div><div class="hcell">J</div><div class="hcell">S</div><div class="hcell">M</div>
+        </div>
+        <div class="sched-foot">
+          <div>
+            <div class="count"><span id="hourCount">0</span> jam</div>
+            <div class="count-label">dijadwalkan minggu ini</div>
+          </div>
+          <div class="count-label" style="text-align:right; max-width:120px;">Semua jam bisa jadi jam kerja.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="wrap">
+    <p>Dipercaya pencari kerja dari 200+ kota — dari Banda Aceh sampai Jayapura</p>
+    <div class="trust-logos">
+      <span>Nusantara Digital</span>
+      <span>Warung Kerja</span>
+      <span>Bina Usaha</span>
+      <span>Lentera Kreatif</span>
+      <span>Anak Bangsa Studio</span>
+    </div>
+  </div>
+</div>
+
+<!-- KATEGORI -->
+<section id="kategori">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Kategori pekerjaan</span>
+      <h2>Pilih kategori sesuai skill kamu</h2>
+      <p>Delapan bidang paling dicari, lowongan baru terbuka tiap hari.</p>
+    </div>
+    <div class="kat-grid" id="katGrid"></div>
+  </div>
+</section>
+
+<!-- CARA KERJA -->
+<section id="cara-kerja" style="background:var(--paper-alt);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Cara kerja</span>
+      <h2>Tiga langkah, langsung kerja</h2>
+      <p>Nggak perlu wawancara berkali-kali atau proses berbelit.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="step-num">01</span>
+        <h4>Buat profil</h4>
+        <p>Isi profil singkat — ceritain skill, pengalaman, dan waktu luang yang kamu punya.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">02</span>
+        <h4>Pilih lowongan</h4>
+        <p>Telusuri lowongan sesuai kategori, gaji, dan jam kerja yang paling cocok buat kamu.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">03</span>
+        <h4>Mulai kerja</h4>
+        <p>Terhubung langsung dengan perekrut, kerja dari rumah, dan terima bayaran tepat waktu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOWONGAN -->
+<section id="lowongan">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Lowongan terbaru</span>
+      <h2>Baru dibuka minggu ini</h2>
+      <p>Diperbarui tiap hari, langsung dari perekrut yang sudah terverifikasi.</p>
+    </div>
+    <div class="job-list" id="jobList"></div>
+  </div>
+</section>
+
+<!-- TESTIMONI -->
+<section id="testimoni" style="background:var(--paper-alt);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Cerita pengguna</span>
+      <h2>Kata mereka yang sudah coba</h2>
+      <p>Dari ibu rumah tangga, mahasiswa, sampai yang resign dari kantor.</p>
+    </div>
+    <div class="testi-grid" id="testiGrid"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin:0 auto 48px; text-align:center;">
+      <span class="eyebrow">Pertanyaan umum</span>
+      <h2>Masih ada yang mau ditanya?</h2>
+    </div>
+    <div class="faq reveal" id="faqList"></div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="cta" style="padding-bottom:110px;">
+  <div class="cta-final reveal">
+    <h2>Siap mulai kerja dari rumah?</h2>
+    <p>Daftar gratis, isi profil 5 menit, langsung bisa melamar lowongan pertamamu.</p>
+    <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553" class="btn btn-sun">Daftar Sekarang — Gratis</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><span class="logo-mark">KR</span>KerjaRumah</div>
+        <p class="foot-tag">Menghubungkan pekerja rumahan Indonesia dengan lowongan freelance dan remote yang asli.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Kategori</h5>
+        <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553">Admin & Entri Data</a>
+        <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553">Customer Service</a>
+        <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553">Penulis Konten</a>
+        <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553">Desain Grafis</a>
+      </div>
+      <div class="foot-col">
+        <h5>Perusahaan</h5>
+        <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553">Tentang Kami</a>
+        <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553">Karier</a>
+        <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h5>Bantuan</h5>
+        <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553">FAQ</a>
+        <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553">Kontak</a>
+        <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553">Syarat & Ketentuan</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 KerjaRumah. Semua hak dilindungi.</span>
+      <span>Dibuat untuk pekerja rumahan Indonesia 🇮🇩</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---------- Data ----------
+const categories = [
+  {icon:'doc', name:'Admin & Entri Data', desc:'Kelola data, input laporan, susun dokumen.', count:'1.840 lowongan'},
+  {icon:'chat', name:'Customer Service', desc:'Layani pelanggan lewat chat, email, atau telepon.', count:'1.520 lowongan'},
+  {icon:'pen', name:'Penulis Konten', desc:'Tulis artikel, caption, dan naskah promosi.', count:'980 lowongan'},
+  {icon:'palette', name:'Desain Grafis', desc:'Bikin visual sosial media, banner, dan materi promosi.', count:'760 lowongan'},
+  {icon:'globe', name:'Penerjemah', desc:'Terjemahkan dokumen dan konten Inggris-Indonesia.', count:'430 lowongan'},
+  {icon:'phone', name:'Telemarketing & Sales', desc:'Tawarkan produk lewat telepon atau pesan.', count:'690 lowongan'},
+  {icon:'megaphone', name:'Admin Media Sosial', desc:'Kelola jadwal posting dan interaksi followers.', count:'1.110 lowongan'},
+  {icon:'calc', name:'Akuntansi & Pembukuan', desc:'Susun laporan keuangan dan catat transaksi.', count:'350 lowongan'},
+];
+
+const icons = {
+  doc:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><path d="M9 13h6M9 17h6"/></svg>',
+  chat:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v12H8l-4 4z"/></svg>',
+  pen:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/></svg>',
+  palette:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a9 9 0 100 18c1.5 0 2-1 2-2s-.5-1.5-.5-2.5S14 15 15.5 15H18a3 3 0 003-3c0-5-4-9-9-9z"/><circle cx="8" cy="11" r="1"/><circle cx="12" cy="8" r="1"/><circle cx="16" cy="11" r="1"/></svg>',
+  globe:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>',
+  phone:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 006 6L16 14l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>',
+  megaphone:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10v4h3l6 4V6L6 10z"/><path d="M17 8a4 4 0 010 8"/></svg>',
+  calc:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M8 12h1M12 12h1M16 12h1M8 16h1M12 16h1M16 16h1"/></svg>',
+};
+
+const jobs = [
+  {title:'Admin Toko Online', badge:'doc', pay:'Rp 3.000.000 – 4.500.000', type:'Per bulan · Paruh waktu', tags:['WFH','Fleksibel'], time:'2 hari lalu'},
+  {title:'Customer Service Chat', badge:'chat', pay:'Rp 2.800.000 – 3.800.000', type:'Per bulan · Shift malam', tags:['WFH'], time:'1 hari lalu'},
+  {title:'Penulis Artikel SEO', badge:'pen', pay:'Rp 100.000 – 250.000', type:'Per artikel · Freelance', tags:['WFH','Freelance'], time:'5 jam lalu'},
+  {title:'Desainer Grafis Sosmed', badge:'palette', pay:'Rp 3.500.000', type:'Per bulan · Penuh waktu', tags:['WFH'], time:'3 hari lalu'},
+  {title:'Penerjemah Inggris-Indonesia', badge:'globe', pay:'Rp 150.000 / 1000 kata', type:'Freelance', tags:['WFH','Fleksibel'], time:'1 hari lalu'},
+];
+
+const testimonials = [
+  {quote:'“Sambil momong anak, aku masih bisa kerja admin online. Jamnya aku yang atur sendiri.”', name:'Rini', role:'Ibu Rumah Tangga, Yogyakarta', color:'var(--teal)'},
+  {quote:'“Kuliah pagi, kerja jadi CS malam hari. Penghasilan tambahan buat uang jajan bulanan.”', name:'Dimas', role:'Mahasiswa, Malang', color:'var(--forest)'},
+  {quote:'“Resign dari kantor, sekarang full remote jadi penulis konten. Waktu jauh lebih fleksibel.”', name:'Nurul', role:'Penulis Lepas, Bandung', color:'var(--sun)'},
+];
+
+const faqs = [
+  {q:'Apakah harus bayar untuk daftar?', a:'Tidak. Mendaftar dan melamar lowongan di KerjaRumah gratis selamanya, tanpa biaya tersembunyi.'},
+  {q:'Apakah lowongannya asli?', a:'Setiap perusahaan yang memasang lowongan diverifikasi oleh tim kami sebelum lowongan ditayangkan.'},
+  {q:'Bagaimana cara pembayarannya?', a:'Pembayaran dilakukan langsung oleh perekrut ke rekening bank atau e-wallet kamu sesuai kesepakatan.'},
+  {q:'Bisa kerja sambil kuliah atau momong anak?', a:'Bisa. Banyak lowongan dengan jam kerja fleksibel yang bisa disesuaikan dengan kesibukanmu.'},
+];
+
+// ---------- Render ----------
+const katGrid = document.getElementById('katGrid');
+categories.forEach((c,i)=>{
+  const el = document.createElement('div');
+  el.className = 'kat-card reveal';
+  el.style.transitionDelay = (i*0.05)+'s';
+  el.innerHTML = `<div class="kat-icon">${icons[c.icon]}</div><h4>${c.name}</h4><p>${c.desc}</p><span class="kat-count">${c.count}</span>`;
+  katGrid.appendChild(el);
+});
+
+const jobList = document.getElementById('jobList');
+jobs.forEach((j,i)=>{
+  const el = document.createElement('div');
+  el.className = 'job-card reveal';
+  el.style.transitionDelay = (i*0.05)+'s';
+  el.innerHTML = `
+    <div class="job-left">
+      <div class="job-badge">${icons[j.badge]}</div>
+      <div>
+        <div class="job-title">${j.title}</div>
+        <div class="job-meta">${j.tags.map(t=>`<span class="job-tag">${t}</span>`).join('')}<span>${j.time}</span></div>
+      </div>
+    </div>
+    <div class="job-right">
+      <div class="job-pay"><div class="amount">${j.pay}</div><div class="type">${j.type}</div></div>
+      <a href="https://tallynotrid.com/eeaf6um2c?key=06eccaf1d08d0edd91f0af2a12dd3553" class="job-btn">Lihat Detail</a>
+    </div>`;
+  jobList.appendChild(el);
+});
+
+const testiGrid = document.getElementById('testiGrid');
+testimonials.forEach((t,i)=>{
+  const el = document.createElement('div');
+  el.className = 'testi-card reveal';
+  el.style.transitionDelay = (i*0.08)+'s';
+  el.innerHTML = `<p class="testi-quote">${t.quote}</p>
+    <div class="testi-person">
+      <div class="avatar" style="background:${t.color}">${t.name[0]}</div>
+      <div><div class="p-name">${t.name}</div><div class="p-role">${t.role}</div></div>
+    </div>`;
+  testiGrid.appendChild(el);
+});
+
+const faqList = document.getElementById('faqList');
+faqs.forEach((f)=>{
+  const el = document.createElement('div');
+  el.className = 'faq-item';
+  el.innerHTML = `<div class="faq-q"><h4>${f.q}</h4><span class="faq-icon"></span></div><div class="faq-a"><p>${f.a}</p></div>`;
+  const q = el.querySelector('.faq-q');
+  const a = el.querySelector('.faq-a');
+  q.addEventListener('click', ()=>{
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{ i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+    if(!isOpen){ el.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+  });
+  faqList.appendChild(el);
+});
+
+// ---------- Schedule widget ----------
+const schedGrid = document.getElementById('schedGrid');
+const days = 7, slots = ['Pagi','Siang','Malam'];
+const preset = ['1-0','2-0','1-1','4-2','5-2','3-0'];
+slots.forEach((s, r)=>{
+  const label = document.createElement('div');
+  label.className = 'rlabel';
+  label.textContent = s[0];
+  schedGrid.appendChild(label);
+  for(let d=0; d<days; d++){
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.dataset.key = d+'-'+r;
+    if(preset.includes(d+'-'+r)) cell.classList.add('active');
+    cell.addEventListener('click', ()=>{ cell.classList.toggle('active'); updateCount(); });
+    schedGrid.appendChild(cell);
+  }
+});
+function updateCount(){
+  const active = document.querySelectorAll('#schedGrid .cell.active').length;
+  document.getElementById('hourCount').textContent = active * 4;
+}
+document.getElementById('resetSched').addEventListener('click', ()=>{
+  document.querySelectorAll('#schedGrid .cell').forEach(c=>c.classList.remove('active'));
+  updateCount();
+});
+updateCount();
+
+// ---------- Mobile menu ----------
+document.querySelector('.hamburger').addEventListener('click', ()=>{
+  const links = document.querySelector('.nav-links');
+  const open = links.style.display === 'flex';
+  links.style.cssText = open ? '' : 'display:flex; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:var(--paper); padding:20px 32px; gap:18px; border-bottom:1px solid var(--line);';
+});
+
+// ---------- Scroll reveal ----------
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); } });
+}, {threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
